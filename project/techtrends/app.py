@@ -1,13 +1,20 @@
 import sqlite3
-
-from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash
+import logging
+from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash, Response
 from werkzeug.exceptions import abort
+
+logging.basicConfig(level=logging.DEBUG, format='%(levelname)s: %(asctime)s, %(message)s')
+
+
+class ConnectionCounts:
+    count = 0
 
 # Function to get a database connection.
 # This function connects to database with the name `database.db`
 def get_db_connection():
     connection = sqlite3.connect('database.db')
     connection.row_factory = sqlite3.Row
+    ConnectionCounts.count += 1
     return connection
 
 # Function to get a post using its ID
@@ -35,14 +42,19 @@ def index():
 @app.route('/<int:post_id>')
 def post(post_id):
     post = get_post(post_id)
+    
     if post is None:
+      app.logger.info("Article not found: 404")
       return render_template('404.html'), 404
     else:
+      app.logger.info("{}, retrieved".format(post["title"]))
       return render_template('post.html', post=post)
+      
 
 # Define the About Us page
 @app.route('/about')
 def about():
+    app.logger.info("About us page retrieved")
     return render_template('about.html')
 
 # Define the post creation functionality 
@@ -60,10 +72,26 @@ def create():
                          (title, content))
             connection.commit()
             connection.close()
-
+            app.logger.info("New article created {}".format(title))
             return redirect(url_for('index'))
 
     return render_template('create.html')
+
+# Define the healthz response
+@app.route('/healthz')
+def healthz():
+    return Response("{'result':'OK - healthy'}", status=200, mimetype='application/json')
+
+@app.route('/metrics')
+def metrics():
+    connection = get_db_connection()
+    posts = connection.execute('SELECT * FROM posts').fetchall()
+
+    response = Response(json.dumps({'db_connection_count': ConnectionCounts.count, 
+                         'post_count':len(posts)}), 
+            status=200, 
+            mimetype="application/json")
+    return response
 
 # start the application on port 3111
 if __name__ == "__main__":
