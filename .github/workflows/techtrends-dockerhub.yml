@@ -31,4 +31,4 @@ jobs:
           context: "{{defaultContext}}:project"
           push: true
           platforms: linux/amd64
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/techtrends:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/techtrends:latest
