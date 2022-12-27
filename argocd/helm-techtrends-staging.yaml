@@ -8,6 +8,10 @@ spec:
     namespace: staging
   project: default
   source:
-    chart: techtrends
-    values:
+    helm:
+      valueFiles:
       - values-staging.yaml
+    path: helm
+    repoURL: https://github.com/sameedhayat/nd064_course_1
+    targetRevision: HEAD
+  syncPolicy: {}
