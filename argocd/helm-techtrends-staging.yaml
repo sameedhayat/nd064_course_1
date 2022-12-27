@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: techtrends-staging
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: staging
+  project: default
+  source:
+    chart: techtrends
+    values:
+      - values-staging.yaml
