@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: techtrends-prod
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: production
+  project: default
+  source:
+    chart: techtrends
+    values:
+      - values-prod.yaml
