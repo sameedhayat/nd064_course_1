@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: {{ .Values.image.repository }}
-        image:  {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        image:  sameedhayat/{{ .Values.image.repository }}:{{ .Values.image.tag }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
         - containerPort: {{ .Values.containerPort }}
