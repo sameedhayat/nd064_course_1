@@ -1,7 +1,7 @@
 namespace: production
 
 service:
-  port: 4111
+  port: 5111
   targetPort: 3111
   protocol: TCP
   type: ClusterIP
