@@ -1,11 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: techtrends-production
+  name: techtrends-prod
+  namespace: argocd
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: production
+    namespace: prod
   project: default
   source:
     helm:
