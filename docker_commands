@@ -1,4 +1,4 @@
-## Docker commands used to build the application 
+-## Docker commands used to build the application 
 docker build -t techtrends .
 
 ## Docker commands used to run the application
@@ -8,27 +8,31 @@ docker run -p 7111:3111 -d techtrends
 docker logs <container_id>
 
 ## Logs from the container running the TechTrends application
-PS C:\Users\Asus\Documents\devops\project4\nd064_course_1\project> docker logs 48a21804cb76286714b3338e214b9c5b2eeba83c4a8d18a3d91354fdc8b26111
  * Serving Flask app 'app' (lazy loading)
  * Environment: production
    WARNING: This is a development server. Do not use it in a production deployment.
    Use a production WSGI server instead.
  * Debug mode: off
-WARNING: 2022-12-15 23:56:45,900,  * Running on all addresses.
+ * Running on all addresses.
    WARNING: This is a development server. Do not use it in a production deployment.
-INFO: 2022-12-15 23:56:45,900,  * Running on http://172.17.0.2:3111/ (Press CTRL+C to quit)
-INFO: 2022-12-15 23:57:05,141, KubeCon + CloudNativeCon 2021, retrieved
-INFO: 2022-12-15 23:57:05,154, 172.17.0.1 - - [15/Dec/2022 23:57:05] "GET /2 HTTP/1.1" 200 -
-INFO: 2022-12-15 23:57:05,418, 172.17.0.1 - - [15/Dec/2022 23:57:05] "GET /static/css/main.css HTTP/1.1" 304 -
-INFO: 2022-12-15 23:57:18,746, About us page retrieved
-INFO: 2022-12-15 23:57:18,755, 172.17.0.1 - - [15/Dec/2022 23:57:18] "GET /about HTTP/1.1" 200 -
-INFO: 2022-12-15 23:57:19,148, 172.17.0.1 - - [15/Dec/2022 23:57:19] "GET /static/css/main.css HTTP/1.1" 304 -
-INFO: 2022-12-15 23:57:20,887, 172.17.0.1 - - [15/Dec/2022 23:57:20] "GET /create HTTP/1.1" 200 -
-INFO: 2022-12-15 23:57:21,234, 172.17.0.1 - - [15/Dec/2022 23:57:21] "GET /static/css/main.css HTTP/1.1" 304 -
-INFO: 2022-12-15 23:57:40,265, New article created ChatGPT Is a Tipping Point for AI
-INFO: 2022-12-15 23:57:40,266, 172.17.0.1 - - [15/Dec/2022 23:57:40] "POST /create HTTP/1.1" 302 -
-INFO: 2022-12-15 23:57:40,287, 172.17.0.1 - - [15/Dec/2022 23:57:40] "GET / HTTP/1.1" 200 -
-INFO: 2022-12-15 23:57:40,570, 172.17.0.1 - - [15/Dec/2022 23:57:40] "GET /static/css/main.css HTTP/1.1" 304 -
-INFO: 2022-12-15 23:57:52,496, Article not found: 404
-INFO: 2022-12-15 23:57:52,500, 172.17.0.1 - - [15/Dec/2022 23:57:52] "GET /15 HTTP/1.1" 404 -
-INFO: 2022-12-15 23:57:52,861, 172.17.0.1 - - [15/Dec/2022 23:57:52] "GET /static/css/main.css HTTP/1.1" 304 -
+ * Running on http://172.17.0.2:3111/ (Press CTRL+C to quit)
+172.17.0.1 - - [02/Jan/2023 12:40:55] "GET / HTTP/1.1" 200 -
+172.17.0.1 - - [02/Jan/2023 12:40:55] "GET /static/css/main.css HTTP/1.1" 304 -
+2023-01-02 12:40:57,846 - INFO - KubeCon + CloudNativeCon 2021, retrieved
+172.17.0.1 - - [02/Jan/2023 12:40:57] "GET /2 HTTP/1.1" 200 -
+172.17.0.1 - - [02/Jan/2023 12:40:58] "GET /static/css/main.css HTTP/1.1" 304 -
+2023-01-02 12:41:02,283 - INFO - Article not found: 404
+172.17.0.1 - - [02/Jan/2023 12:41:02] "GET /20 HTTP/1.1" 404 -
+172.17.0.1 - - [02/Jan/2023 12:41:02] "GET /static/css/main.css HTTP/1.1" 304 -
+2023-01-02 12:41:06,037 - INFO - About us page retrieved
+172.17.0.1 - - [02/Jan/2023 12:41:06] "GET /about HTTP/1.1" 200 -
+172.17.0.1 - - [02/Jan/2023 12:41:06] "GET /static/css/main.css HTTP/1.1" 304 -
+172.17.0.1 - - [02/Jan/2023 12:41:07] "GET /create HTTP/1.1" 200 -
+172.17.0.1 - - [02/Jan/2023 12:41:07] "GET /static/css/main.css HTTP/1.1" 304 -
+2023-01-02 12:41:21,905 - INFO - New article created ChatGPT, a chatbot that answers questions and writes essays
+172.17.0.1 - - [02/Jan/2023 12:41:21] "POST /create HTTP/1.1" 302 -
+172.17.0.1 - - [02/Jan/2023 12:41:21] "GET / HTTP/1.1" 200 -
+172.17.0.1 - - [02/Jan/2023 12:41:22] "GET /static/css/main.css HTTP/1.1" 304 -
+2023-01-02 12:41:24,455 - INFO - ChatGPT, a chatbot that answers questions and writes essays, retrieved
+172.17.0.1 - - [02/Jan/2023 12:41:24] "GET /7 HTTP/1.1" 200 -
+172.17.0.1 - - [02/Jan/2023 12:41:24] "GET /static/css/main.css HTTP/1.1" 304 -

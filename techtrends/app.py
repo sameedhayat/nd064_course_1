@@ -5,9 +5,12 @@ from flask import Flask, jsonify, json, render_template, request, url_for, redir
 from werkzeug.exceptions import abort
 
 
+# Define the Flask application
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'qwertyuiopasdfghjklzxcvbnm123456'
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.DEBUG)
 
 # create a handler that logs to STDOUT
 stdout_handler = logging.StreamHandler(sys.stdout)
@@ -45,9 +48,7 @@ def get_post(post_id):
     connection.close()
     return post
 
-# Define the Flask application
-app = Flask(__name__)
-app.config['SECRET_KEY'] = 'your secret key'
+
 
 # Define the main route of the web application 
 @app.route('/')
@@ -64,17 +65,17 @@ def post(post_id):
     post = get_post(post_id)
     
     if post is None:
-      app.logger.info("Article not found: 404")
+      logger.info("Article not found: 404")
       return render_template('404.html'), 404
     else:
-      app.logger.info("{}, retrieved".format(post["title"]))
+      logger.info("{}, retrieved".format(post["title"]))
       return render_template('post.html', post=post)
       
 
 # Define the About Us page
 @app.route('/about')
 def about():
-    app.logger.info("About us page retrieved")
+    logger.info("About us page retrieved")
     return render_template('about.html')
 
 # Define the post creation functionality 
@@ -92,7 +93,7 @@ def create():
                          (title, content))
             connection.commit()
             connection.close()
-            app.logger.info("New article created {}".format(title))
+            logger.info("New article created {}".format(title))
             return redirect(url_for('index'))
 
     return render_template('create.html')
