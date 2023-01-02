@@ -3,9 +3,6 @@ namespace: staging
 service:
   port: 5111
 
-image:
-  pullPolicy: IfNotPresent
-
 replicaCount: 3
 
 resources:
