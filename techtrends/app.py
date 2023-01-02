@@ -1,10 +1,30 @@
+import sys
 import sqlite3
 import logging
 from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash, Response
 from werkzeug.exceptions import abort
 
-logging.basicConfig(level=logging.DEBUG, format='%(levelname)s: %(asctime)s, %(message)s')
 
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
+# create a handler that logs to STDOUT
+stdout_handler = logging.StreamHandler(sys.stdout)
+stdout_handler.setLevel(logging.INFO)
+
+# create a handler that logs to STDERR
+stderr_handler = logging.StreamHandler(sys.stderr)
+stderr_handler.setLevel(logging.ERROR)
+
+# create a formatter and add it to the handlers
+formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+stdout_handler.setFormatter(formatter)
+stderr_handler.setFormatter(formatter)
+
+# add the handlers to the logger
+logger.addHandler(stdout_handler)
+logger.addHandler(stderr_handler)
 
 class ConnectionCounts:
     count = 0
